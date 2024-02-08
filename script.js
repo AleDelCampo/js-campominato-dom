@@ -75,7 +75,7 @@ function clickSquare() {
 
     if (clickedSquares === cells - bombPositions.length) {
         gameOver = true;
-        document.getElementById("result").innerText = `Ne esci vittorioso, non hai calpestato alcuna mina. Complimenti soldato!! ${score - bombPositions.length}`;
+        document.getElementById("result").innerText = `Ne esci vittorioso, non hai calpestato alcuna mina. Complimenti soldato!! ${cells - bombPositions.length}`;
     }
 }
 

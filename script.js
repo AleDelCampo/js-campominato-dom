@@ -40,6 +40,7 @@ button.addEventListener("click", function() {
     gameOver = false;
     clickedSquares = 0;
     score = 0;
+    score = 0;
     createGrid();
 });
 
@@ -64,7 +65,7 @@ function clickSquare() {
     if (bombPositions.includes(cell + 1)) {
         revealBombs();
         gameOver = true;
-        document.getElementById("result").innerText = ("KABOOOOOOOM!!");
+        document.getElementById("result").innerText = `KABOOOOOOOOM!! Hai evitato solo ${score} mine.`;
         return;
     }
 
@@ -74,7 +75,7 @@ function clickSquare() {
 
     if (clickedSquares === cells - bombPositions.length) {
         gameOver = true;
-        document.getElementById("result").innerText = ("Ne esci vittorioso, non hai calpestato alcuna mina. Complimenti soldato!!");
+        document.getElementById("result").innerText = `Ne esci vittorioso, non hai calpestato alcuna mina. Complimenti soldato!! ${score - bombPositions.length}`;
     }
 }
 

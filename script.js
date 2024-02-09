@@ -48,7 +48,7 @@ function createGrid() {
     for (let i = 0; i < cells; i++) {
         const square = document.createElement("div");
         square.classList.add(squareClass);
-        square.dataset.cell = i;
+        square.cell = i;
         square.textContent = i + 1;
         square.addEventListener("click", clickSquare);
         grid.append(square);
@@ -60,12 +60,12 @@ let cells;
 function clickSquare() {
     if (gameOver) return;
 
-    const cell = parseInt(this.dataset.cell);
+    const cell = parseInt(this.cell);
 
     if (bombPositions.includes(cell + 1)) {
         revealBombs();
         gameOver = true;
-        document.getElementById("result").innerText = `KABOOOOOOOOM!! Hai evitato solo ${score} mine.`;
+        document.getElementById("result").innerText = `KABOOOOOOOOM!! Il tuo punteggio è di: ${score}. Peccato, ne mancavano solo: ${cells - bombPositions.length}.`;
         return;
     }
 
@@ -73,9 +73,11 @@ function clickSquare() {
     clickedSquares++;
     score++;
 
+    document.getElementById("result").innerHTML = `Conteggio salvezza: ${score}`;
+
     if (clickedSquares === cells - bombPositions.length) {
         gameOver = true;
-        document.getElementById("result").innerText = `Ne esci vittorioso, non hai calpestato alcuna mina. Complimenti soldato!! ${cells - bombPositions.length}`;
+        document.getElementById("result").innerText = `Ne esci vittorioso, non hai calpestato alcuna mina. Complimenti soldato!! Punti : ${cells - bombPositions.length}`;
     }
 }
 
